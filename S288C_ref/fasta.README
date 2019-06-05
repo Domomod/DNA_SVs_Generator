@@ -1,0 +1,38 @@
+http://downloads.yeastgenome.org/sequence/S288C_reference/chromosomes/fasta/
+
+Contains current DNA sequences for all chromosomes and mitochondrial DNA of
+S. cerevisiae strain S288C, in FASTA format.  Individual chromosome sequence 
+files are updated when there is a change in the chromosomal sequence stored
+in SGD.
+
+The archive directory contains archived previous versions of files that make 
+up the SGD information that is transmitted to NCBI for the creation of the 
+S. cerevisiae strain S288C reference genome sequence.
+
+------ 
+NOTES:
+------ 
+
+These files do not include sequences for the 2-micron plasmid or ORFs
+encoded on the 2-micron plasmid.
+
+Sequence for the 2-micron plasmid can be obtained from GenBank:
+http://www.ncbi.nlm.nih.gov/nucleotide/NC_001398
+
+The start coordinate of the 2-micron plasmid sequence in SGD, in both the 
+database and on the Downloads site, has been shifted 1 kb upstream relative 
+to that provided in the GenBank record cited above.  As a result, the 2-micron 
+plasmid sequence in SGD starts upstream of FLP1 rather than in the middle of 
+the FLP1 coding region.
+
+This FASTA directory is provided for your convenience, and does not contain the 
+true FASTA files, but rather UNIX soft links to the true files.  Therefore, the 
+modification dates provided for files within the FASTA directory DO NOT always 
+represent the last modification dates of the chromosomal sequences.  To obtain 
+that information, please look at the true files (that end in '.fsa') at:
+
+http://downloads.yeastgenome.org/sequence/S288C_reference/NCBI_genome_source/
+
+If you have any questions, please send us an email at:
+
+sgd-helpdesk@lists.stanford.edu
