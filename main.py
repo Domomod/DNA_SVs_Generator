@@ -3,8 +3,11 @@ from random import randint
 
 
 def main():
-    # def inser(genome, vs_ref_table, vs_new_table):
-    # def trans(genome, vs_ref_table, vs_new_table):
+    def inser(genome, vs_ref_table, vs_new_table):
+        pass
+
+    def trans(genome, vs_ref_table, vs_new_table):
+        pass
 
     def dele(pos, size):
         nonlocal full_read, offset_to_ref, vs_ref, vs_new
@@ -13,9 +16,14 @@ def main():
         vs_new.append(("deletion", pos, pos + size))
         offset_to_ref += size
 
-    # def inver(genome, vs_ref_table, vs_new_table):
-    # def dupli(genome, vs_ref_table, vs_new_table):
-    # def dupli_t(genome, vs_ref_table, vs_new_table):
+    def inver(genome, vs_ref_table, vs_new_table):
+        pass
+
+    def dupli(genome, vs_ref_table, vs_new_table):
+        pass
+
+    def dupli_t(genome, vs_ref_table, vs_new_table):
+        pass
 
     chromosome_file_path = "S288C_ref/"
     chromosome_names = []
