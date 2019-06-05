@@ -2,43 +2,46 @@
 from random import randint
 
 
-def main():
-    def inser(pos_from, pos_to, size):
+class Application:
+    def __init__(self):
+        self.full_read = []
+        self.offset_to_ref = 0
+        self.vs_ref = []
+        self.vs_new = []
+
+    def inser(self, pos_from, pos_to, size):
         pass
 
-    def trans(pos_start, pos_end, size):
-        nonlocal full_read, offset_to_ref, vs_ref, vs_new
-        dupli(pos_start, pos_end, size)
-        dele(pos_start, size)
+    def trans(self, pos_start, pos_end, size):
+        self.dupli(pos_start, pos_end, size)
+        self.dele(pos_start, size)
 
-    def dele(pos, size):
-        nonlocal full_read, offset_to_ref, vs_ref, vs_new
-        del full_read[pos:(pos+size)]
-        vs_ref.append(("deletion", pos + offset_to_ref, pos + offset_to_ref + size))
-        vs_new.append(("deletion", pos, pos + size))
-        offset_to_ref += size
+    def dele(self, pos, size):
+        del self.full_read[pos:(pos+size)]
+        self.vs_ref.append(("deletion", pos + self.offset_to_ref, pos + self.offset_to_ref + size))
+        self.vs_new.append(("deletion", pos, pos + size))
+        self.offset_to_ref += size
 
-    def inver(pos, size):
-        nonlocal full_read, offset_to_ref, vs_ref, vs_new
+    def inver(self, pos, size):
         for i in range(int(size / 2) + 1):
-            full_read[i + pos], full_read[pos+size - i] = full_read[pos+size - i], full_read[i + pos]
-        vs_ref.append(("inversion", pos + offset_to_ref, pos + offset_to_ref + size))
-        vs_new.append(("inversion", pos, pos + size))
+            self.full_read[i + pos], self.full_read[pos+size - i] = self.full_read[pos+size - i], self.full_read[i + pos]
+        self.vs_ref.append(("inversion", pos + self.offset_to_ref, pos + self.offset_to_ref + size))
+        self.vs_new.append(("inversion", pos, pos + size))
 
-    def dupli(pos_start, pos_end, size):
-        nonlocal full_read, offset_to_ref, vs_ref, vs_new
+    def dupli(self, pos_start, pos_end, size):
         for i in range(size):
-            full_read.insert(pos_end+i, full_read[pos_start+i])
+            self.full_read.insert(pos_end+i, self.full_read[pos_start+i])
         # vs_ref.append(("dupl", pos + offset_to_ref, pos + offset_to_ref + size)) # ??
         # vs_new.append(("dupl", pos, pos + size)) # ??
 
-    def dupli_t(pos, size):
-        nonlocal full_read, offset_to_ref, vs_ref, vs_new
+    def dupli_t(self, pos, size):
         for i in range(size):
-            full_read.insert(pos+size+i, full_read[pos+i])
-        vs_ref.append(("tandem_dupl", pos + offset_to_ref, pos + offset_to_ref + size)) # ??
-        vs_new.append(("tandem_dupl", pos, pos + size)) # ??
+            self.full_read.insert(pos+size+i, self.full_read[pos+i])
+        self.vs_ref.append(("tandem_dupl", pos + self.offset_to_ref, pos + self.offset_to_ref + size)) # ??
+        self.vs_new.append(("tandem_dupl", pos, pos + size)) # ??
 
+
+def main():
 
     chromosome_file_path = "S288C_ref/"
     chromosome_names = []
@@ -61,10 +64,10 @@ def main():
         vs_new = []
         current_pos = 0
         print(''.join(full_read[0:40]))
-        dele(current_pos, 10)
+        # dele(current_pos, 10)
 
         current_pos += 10
-        dele(current_pos, 10)
+        # dele(current_pos, 10)
         print(''.join(full_read[0:20]))
 
         print("ref: \t", vs_ref)
